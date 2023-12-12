@@ -61,6 +61,7 @@ class Cuboid:
     length_m: float
     width_m: float
     height_m: float
+    track_id: str
     timestamp_ns: Optional[int] = None
     category: Optional[Enum] = None
 
@@ -152,6 +153,7 @@ class Cuboid:
             length_m=self.length_m,
             width_m=self.width_m,
             height_m=self.height_m,
+            track_id=self.track_id,
             category=self.category,
             timestamp_ns=self.timestamp_ns,
         )
@@ -288,6 +290,7 @@ class CuboidList:
                 length_m=cuboid.length_m,
                 width_m=cuboid.width_m,
                 height_m=cuboid.height_m,
+                track_id=cuboid.track_id,
                 category=cuboid.category,
                 timestamp_ns=cuboid.timestamp_ns,
             )
@@ -409,6 +412,7 @@ class CuboidList:
         length_m = data.loc[:, "length_m"].to_numpy()
         width_m = data.loc[:, "width_m"].to_numpy()
         height_m = data.loc[:, "height_m"].to_numpy()
+        track_ids = data.loc[:, "track_uuid"].to_numpy()
         category = data.loc[:, "category"].to_numpy()
         timestamp_ns = data.loc[:, "timestamp_ns"].to_numpy()
         N = len(data)
@@ -421,6 +425,7 @@ class CuboidList:
                 length_m=length_m[i],
                 width_m=width_m[i],
                 height_m=height_m[i],
+                track_id=track_ids[i],
                 category=category[i],
                 timestamp_ns=timestamp_ns[i],
             )
